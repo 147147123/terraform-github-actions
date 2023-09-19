@@ -38,8 +38,8 @@ resource "azurerm_monitor_action_group" "ag_error" {
   dynamic "email_receiver" {
     for_each = var.email_receiver_settings
     content {
-      name                    = email_receiver_settings.value["name"]
-      email_address           = email_receiver_settings.value["email_address"]
+      name                    = email_receiver_settings.value.name
+      email_address           = email_receiver_settings.value.email_address
       use_common_alert_schema = true
     }
   }
