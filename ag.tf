@@ -16,7 +16,7 @@ resource "azurerm_monitor_action_group" "ag_error" {
 resource "azurerm_monitor_action_group" "ag_warning" {
   name                = "ag-warning-${var.environment}-eun"
   short_name          = "ag"
-  resource_group_name = data.azurerm_resource_group.resource_group.name
+  resource_group_name = azurerm_resource_group.rg-aks.name
   //tags                = local.defaultTags
 
   dynamic "email_receiver" {
