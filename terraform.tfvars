@@ -6,6 +6,6 @@ environment         = "test"
 email_receiver_settings = [
   {
     name          = "sendtodevops1"
-    email_address = "lkiryl_yaroshkin@epam.com"
+    email_address = "kiryl_yaroshkin@epam.com"
   }
 ]
