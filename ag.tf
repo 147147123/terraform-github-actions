@@ -15,12 +15,3 @@ resource "azurerm_monitor_action_group" "ag_error" {
   }
 
 }
-
-variable "email_receiver_settings" {
-  type = list(object({
-    name          = string
-    email_address = string
-  }))
-  default     = []
-  description = "List of email receivers"
-}
