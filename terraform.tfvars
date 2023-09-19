@@ -1,7 +1,15 @@
 # Sample values
-resource_group_name           = "rg-terraform-github-actions1"
-location                      = "eastus"
-appi_name                     = "appi_alert_check"
-environment                   = "test"
-errorActionGroupMembersList   = "kiryl_yaroshkin@epam.com,147147123@rambler.ru"
-warningActionGroupMembersList = "kiryl_yaroshkin@epam.com,147147123@rambler.ru"
+resource_group_name = "rg-terraform-github-actions1"
+location            = "eastus"
+appi_name           = "appi_alert_check"
+environment         = "test"
+errorActionGroupMembersList = [{
+  name          = "sendtodevops1"
+  email_address = "kiryl_yaroshkin@epam.com"
+  }
+]
+warningActionGroupMembersList = [{
+  name          = "sendtodevops1"
+  email_address = "kiryl_yaroshkin@epam.com"
+  }
+]
