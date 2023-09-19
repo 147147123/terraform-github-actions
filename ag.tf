@@ -1,29 +1,26 @@
 resource "azurerm_monitor_action_group" "ag_error" {
-  name                = "ag-error-${var.environment}-eun"
-  short_name          = "ag"
+  name                = "NameOfTheActionGroup"
   resource_group_name = azurerm_resource_group.rg-aks.name
-  //tags                = local.defaultTags
+  location            = var.location
+  short_name          = "ag"
+  enabled             = true //Check
 
   dynamic "email_receiver" {
-    for_each = var.errorActionGroupMembersList
+    for_each = var.email_receiver_settings
     content {
-      name          = errorActionGroupMembersList.value["name"]
-      email_address = errorActionGroupMembersList.value["email_address"]
+      name                    = email_receiver_settings.value["name"]
+      email_address           = email_receiver_settings.value["email_address"]
+      use_common_alert_schema = true
     }
   }
+
 }
 
-resource "azurerm_monitor_action_group" "ag_warning" {
-  name                = "ag-warning-${var.environment}-eun"
-  short_name          = "ag"
-  resource_group_name = azurerm_resource_group.rg-aks.name
-  //tags                = local.defaultTags
-
-  dynamic "email_receiver" {
-    for_each = var.warningActionGroupMembersList
-    content {
-      name          = warningActionGroupMembersList.value["name"]
-      email_address = warningActionGroupMembersList.value["email_address"]
-    }
-  }
+variable "email_receiver_settings" {
+  type = list(object({
+    name          = string
+    email_address = string
+  }))
+  default     = []
+  description = "List of email receivers"
 }
