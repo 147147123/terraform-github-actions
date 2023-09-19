@@ -7,8 +7,8 @@ resource "azurerm_monitor_action_group" "ag_error" {
   dynamic "email_receiver" {
     for_each = var.errorActionGroupMembersList
     content {
-      name          = email_receiver.value
-      email_address = email_receiver.value
+      name          = errorActionGroupMembersList.value["name"]
+      email_address = errorActionGroupMembersList.value["email_address"]
     }
   }
 }
@@ -22,9 +22,8 @@ resource "azurerm_monitor_action_group" "ag_warning" {
   dynamic "email_receiver" {
     for_each = var.warningActionGroupMembersList
     content {
-      name          = email_receiver.value
-      email_address = email_receiver.value
+      name          = warningActionGroupMembersList.value["name"]
+      email_address = warningActionGroupMembersList.value["email_address"]
     }
   }
 }
-

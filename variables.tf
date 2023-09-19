@@ -3,9 +3,19 @@ variable "location" {}
 variable "appi_name" {}
 variable "environment" {}
 variable "errorActionGroupMembersList" {
-  type = list(string)
+  type = list(object({
+    name          = string
+    email_address = string
+  }))
+  default     = []
+  description = "List of email receivers"
 }
 
 variable "warningActionGroupMembersList" {
-  type = list(string)
+  type = list(object({
+    name          = string
+    email_address = string
+  }))
+  default     = []
+  description = "List of email receivers"
 }
