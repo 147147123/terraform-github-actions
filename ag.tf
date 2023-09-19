@@ -1,5 +1,5 @@
 resource "azurerm_monitor_action_group" "ag_error" {
-  name                = "NameOfTheActionGroup"
+  name                = "ag-${var.environment}-error"
   resource_group_name = azurerm_resource_group.rg-aks.name
   //location            = var.location
   short_name = "ag"
