@@ -68,7 +68,7 @@ resource "azurerm_monitor_scheduled_query_rules_alert" "thirdPartyServiceTimeout
 
   trigger {
     operator  = "GreaterThanOrEqual"
-    threshold = "3"
+    threshold = 3
   }
 
   //tags = var.defaultTags
@@ -103,7 +103,7 @@ resource "azurerm_monitor_scheduled_query_rules_alert" "thirdPartyServiceTimeout
 
   trigger {
     operator  = "GreaterThanOrEqual"
-    threshold = "3"
+    threshold = 1
   }
 
   //tags = var.defaultTags
